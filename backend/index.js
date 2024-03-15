@@ -55,7 +55,6 @@ app.post("/signup", async (req, res) => {
 
 //api log in
 app.post("/login", async (req, res) => {
-  console.log(req.body);
   try {
     const { email } = req.body;
     const result = await userModel.findOne({ email: email });
