@@ -21,11 +21,18 @@ export const userSlice = createSlice({
         state.email = action.payload.data.email;
         state.image = action.payload.data.image;
       },
+      logOutRedux: (state, action) => {
+        state._id = "";
+        state.firstName = "";
+        state.lastName = "";
+        state.email = "";
+        state.image = "";
+      },
     },
   });
   
   
 
-export const { loginRedux } = userSlice.actions;
+export const { loginRedux ,logOutRedux} = userSlice.actions;
 
 export default userSlice.reducer;

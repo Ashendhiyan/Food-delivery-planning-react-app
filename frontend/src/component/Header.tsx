@@ -3,7 +3,9 @@ import logo from "../assets/FoodZoneLogo.png";
 import { Link } from "react-router-dom";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { FaCartArrowDown } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutRedux } from "../redux/userSlice";
+import toast from "react-hot-toast";
 
 interface RootState {
   user: {
@@ -15,12 +17,15 @@ export const Header = () => {
   const [showMenu, setShowMenu] = React.useState(false);
   const userData = useSelector((state: RootState) => state.user); // Explicitly type the state parameter
 
+  const dispatch = useDispatch()
+
   const handleShowMenu = () => {
     setShowMenu((prev) => !prev);
   };
 
   function handleLogut(): void {
-    throw new Error("Function not implemented.");
+   dispatch(logOutRedux())
+   toast.success("Successfully logout !");
   }
 
   return (
@@ -47,7 +52,7 @@ export const Header = () => {
               </div>
             </div>
             <div className="text-slate-600" onClick={handleShowMenu}>
-              <div className="text-3xl cursor-pointer w-10 h-10 rounded-full overflow-hidden drop-shadow-md">
+              <div className="text-3xl cursor-pointer w-8 h-8 rounded-full overflow-hidden drop-shadow-md">
                 {userData.image ? (
                   <img src={userData.image} alt="user" className="h-full w-full" />
                 ) : (
