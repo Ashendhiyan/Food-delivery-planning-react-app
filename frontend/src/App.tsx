@@ -9,7 +9,7 @@ function App() {
       <Toaster />
       <div>
         <Header />
-        <main className="pt-5 bg-slate-100 min-h-[calc(100vh)]">
+        <main className="bg-slate-100 min-h-[calc(89vh)]">
           <Outlet />
         </main>
       </div>

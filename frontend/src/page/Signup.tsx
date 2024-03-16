@@ -76,10 +76,10 @@ export const Signup = () => {
 
 
   return (
-    <div className="mt- -m-9 md:p-1">
-      <div className="w-full max-w-sm bg-white m-auto flex items-center justify-center flex-col p-4 rounded-3xl">
+    <div className="p-3">
+      <div className="w-full  max-w-sm bg-white m-auto flex items-center justify-center flex-col p-4 rounded-3xl">
         {/* <h1 className='text-center text-2xl font-bold'>Sign Up</h1> */}
-        <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md mb-1 mt- -m-3">
+        <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md mb-1 -mt-4">
           <img src={image ? image : loginImg} className="w-full h-full" />
 
           <label htmlFor="profieImage">
@@ -96,7 +96,7 @@ export const Signup = () => {
           </label>
         </div>
 
-        <form className="w-full py-2" onSubmit={handleSubmit}>
+        <form className="w-full " onSubmit={handleSubmit}>
           <div className="mb-1">
             <label htmlFor="firstName" className="form-label mb-0">
               First Name
@@ -143,7 +143,7 @@ export const Signup = () => {
             <label htmlFor="password" className="form-label mb-0 ">
               Password
             </label>
-            <div className="focus-within:outline border-2 outline-1 focus-within:outline-blue-300 flex px-2 py-1 rounded mt-1 mb-2">
+            <div className="focus-within:outline border-2 outline-1 focus-within:outline-blue-300 flex px-2 py-1 rounded mt-1 mb-1">
               <input
                 type={showPassword ? "text" : "password"}
                 className="w-full border-none outline-none"
@@ -166,7 +166,7 @@ export const Signup = () => {
             <label htmlFor="confirmpassword" className="form-label mb-0 ">
               Confirm Password
             </label>
-            <div className="focus-within:outline border-2  outline-1 focus-within:outline-blue-300 flex px-2 py-1 rounded mt-1 mb-2">
+            <div className="focus-within:outline border-2  outline-1 focus-within:outline-blue-300 flex px-2 py-1 rounded mt-1 mb-1">
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 className="w-full border-none outline-none"
@@ -194,7 +194,7 @@ export const Signup = () => {
             </button>
           </div>
         </form>
-        <p className="mt-1 text-center text-sm text-gray-500">
+        <p className="mt-1 text-center text-sm text-gray-500 -mb-4">
           Already have an account ?
           <Link
             to={"/login"}
