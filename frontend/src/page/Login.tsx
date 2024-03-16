@@ -67,7 +67,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="mt-5 md:p-4">
+    <div className="p-14">
       <div className="w-full max-w-sm bg-white m-auto flex items-center justify-center flex-col p-4 rounded-3xl">
         {/* <h1 className='text-center text-2xl font-bold'>Sign Up</h1> */}
         <div className="w-20 overflow-hidden rounded-full drop-shadow-md ">
