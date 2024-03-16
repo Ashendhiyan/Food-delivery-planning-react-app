@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import loginImg from "../assets/hello-2488_256.gif";
 import { BiShow, BiHide } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginRedux } from "../redux/userSlice";
 
 export const Login = () => {
-
   const [showPassword, setShowPassword] = useState(false);
 
   const clearData = () => {
@@ -19,40 +20,53 @@ export const Login = () => {
   const [email, setEail] = useState("");
   const [Password, setPassword] = useState("");
 
+  const userData = useSelector(state => state);
+
+  const dispatch = useDispatch();
+
   const handleShowPassword = () => {
     setShowPassword((prev) => !prev);
   };
 
-  const handleSubmit =async (e:any) => {
-    e.preventDefault()
+  useEffect(() => {
+    console.log(userData); // Log userData whenever it changes
+  }, [userData]); // Run the effect whenever userData changes
 
-    if(email && Password){
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    if (email && Password) {
       try {
         const response = await axios.post("http://localhost:8080/login", {
           email: email,
           Password: Password,
         });
+        console.log(response.data)
+        const responseData = {
+          data: response.data.data, // Assuming your actual data is nested under data property
+          status: response.status,
+          statusText: response.statusText,
+          // You can include other necessary properties here if needed
+        };
         if (response.data.message === "Successfully loged in !") {
+          dispatch(loginRedux(responseData));
           clearData();
-          toast.success("Successfully loged in !")
+          toast.success("Successfully loged in !");
           setTimeout(() => {
-            navigate('/');
-          },1000);
+            navigate("/");
+          }, 1000);
         } else {
           toast.error("This user is not registerd ! please sign up");
         }
-        
-      }catch(error){
+      } catch (error) {
         console.error("Axios Error :", error);
       }
-    }else{
-      toast.error("please enter required fields !")
+    } else {
+      toast.error("please enter required fields !");
     }
   };
 
-
   return (
-    
     <div className="mt-5 md:p-4">
       <div className="w-full max-w-sm bg-white m-auto flex items-center justify-center flex-col p-4 rounded-3xl">
         {/* <h1 className='text-center text-2xl font-bold'>Sign Up</h1> */}
