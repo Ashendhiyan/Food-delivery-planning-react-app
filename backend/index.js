@@ -14,6 +14,9 @@ mongoose
   .then(() => console.log("Connnected to Database !"))
   .catch((err) => console.log(err));
 
+
+// User section
+
 //schema
 const userSchema = mongoose.Schema({
   firstName: String,
@@ -77,5 +80,29 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error"});
   }
 });
+
+
+
+// Product section
+
+const productSchema = mongoose.Schema({
+   name : String,
+   category : String,
+   image : String,
+   price : String,
+   description : String,
+})
+
+const productModel = mongoose.model("product",productSchema)
+
+//save new prodcut
+app.post("/uploadProduct",async(req,res)=>{
+    console.log(req.body)
+    const data = productModel(req.body)
+    const saveData = data.save()
+    res.send({message:"Successffully uploaded !"})
+});
+
+
 
 app.listen(PORT, () => console.log("Server is running at port : " + PORT));
