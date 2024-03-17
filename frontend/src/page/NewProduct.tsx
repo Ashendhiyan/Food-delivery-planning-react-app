@@ -36,20 +36,19 @@ const [description,setDescription] = useState("")
         <label htmlFor="category"  className="-mb-1">Category</label>
         <select className="form-select p-1 my-1 cursor-pointer" aria-label="Default select example" id='category' value={category} onChange={(e)=>{setCategory(e.target.value)}}>
           <option selected>Open this select menu</option>
-          <option value="1">Fruites</option>
-          <option value="2">Vegitables</option>
-          <option value="3">Ice Cream</option>
-          <option value="4">Food</option>
-          <option value="5">Pizza</option>
+          <option >Fruites</option>
+          <option >Vegitables</option>
+          <option >Ice Cream</option>
+          <option >Food</option>
+          <option >Pizza</option>
         </select>
         <label htmlFor="image" className=" mt-1">Image
         <div
           className="h-40 w-full bg-slate-200  rounded flex items-center justify-center cursor-pointer"
         >
-          <span className="text-5xl">
-            <IoCloudUploadOutline />
-          </span>
-          <img src={""}/>
+          {
+            image?  <img src={image} className="h-full"/> : <span className="text-5xl"><IoCloudUploadOutline /></span>
+          }
           <input type={"file"} accept="image/*" id="image" onChange={uploadImage} className="hidden"/>
         </div>
         </label>
