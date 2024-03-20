@@ -37,8 +37,12 @@ export const NewProduct = () => {
         description: description,
       });
       console.log(response);
-      toast.success(response.data.message);
-      clearData()
+      if(response.data.message==="Successffully uploaded !"){
+        toast.success(response.data.message);
+        clearData()
+      }else{
+        toast.error("Somthing wrong !")
+      }
     }else{
       toast.error("Enter require fields !")
     }
@@ -81,6 +85,8 @@ export const NewProduct = () => {
           <option>Ice Cream</option>
           <option>Food</option>
           <option>Pizza</option>
+          <option>cake</option>
+          <option>berger</option>
         </select>
         <label htmlFor="image" className=" mt-1">
           Image
