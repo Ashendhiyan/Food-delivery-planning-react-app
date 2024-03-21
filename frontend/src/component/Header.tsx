@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 interface RootState {
   user: {
     image: string;
+    email:string;
   };
 }
 
@@ -27,6 +28,8 @@ export const Header = () => {
    dispatch(logOutRedux())
    toast.success("Successfully logout !");
   }
+
+
 
   return (
     <div>
@@ -61,9 +64,9 @@ export const Header = () => {
               </div>
               {showMenu && (
                 <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col">
-                  <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer">
-                    New product
-                  </Link>
+                  {
+                    userData.email==="ashen13516@gmail.com" && <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer"> New product</Link>
+                  }
                   {
                     userData.image?  <p className="cursor-pointer text-black bg-blue-400" onClick={handleLogut}>Logout</p> : <Link to={"login"} className="whitespace-nowrap cursor-pointer">
                     Login
