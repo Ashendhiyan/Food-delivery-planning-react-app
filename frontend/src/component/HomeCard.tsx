@@ -15,6 +15,7 @@ const HomeCard: React.FC<HomeCardProps> = ({name,image,category,price}) => {
         </div>
         <h3 className='font-semibold text-slate-600 text-center capitalize text-lg'>{name}</h3>
         <p className='text-center text-slate-500 font-medium'>{category}</p>
+        <p className='text-center font-bold'><span className='text-red-500'>Rs.</span><span>{price}</span></p>
     </div>
   )
 }

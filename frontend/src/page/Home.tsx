@@ -2,11 +2,15 @@ import React from 'react'
 import cycle from "../assets/cycling_983534.png"
 import HomeCard from '../component/HomeCard'
 import { useSelector } from 'react-redux'
+import CardFeature from '../component/CardFeature'
 
 const Home:React.FC = () => {
   const productData = useSelector((state:any)=>state.product.productList)
   console.log(productData)
   const homeProductCartList = productData.slice(0,4)
+  // Vegitables filtering part
+  const homeProductCartListVegitables = productData.filter((el:any)=>el.category === "Vegitables",[])
+  console.log(homeProductCartListVegitables)
   return (
     <div className='p-2 md:p-4'>
       <div className='md:flex gap-5 py-2'>
@@ -25,6 +29,7 @@ const Home:React.FC = () => {
            homeProductCartList[0] && homeProductCartList.map((el: any) =>{
               return(
                 <HomeCard
+                key={el._id}
                 name={el.name}
                 image={el.image}
                 price={el.price}
@@ -34,6 +39,24 @@ const Home:React.FC = () => {
             })
           }
         </div>
+      </div>
+      <div className='mb-48'>
+          <h2 className='font-bold text-2xl text-slate-800 '>Fresh Vegitables</h2>
+          <div className=''>
+            {
+              homeProductCartListVegitables.map((el:any)=>{
+                return(
+                  <CardFeature
+                  key={el._id}
+                  name={el.name}
+                  image={el.image}
+                  price={el.price}
+                  category={el.category}
+                  />
+                )
+              })
+            }
+          </div>
       </div>
     </div>
   )
