@@ -1,7 +1,12 @@
 import React from 'react'
 import cycle from "../assets/cycling_983534.png"
+import HomeCard from '../component/HomeCard'
+import { useSelector } from 'react-redux'
 
-const Home = () => {
+const Home:React.FC = () => {
+  const productData = useSelector((state:any)=>state.product.productList)
+  console.log(productData)
+  const homeProductCartList = productData.slice(0,4)
   return (
     <div className='p-2 md:p-4'>
       <div className='md:flex gap-5 py-2'>
@@ -15,10 +20,19 @@ const Home = () => {
             <button className='font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md'>Order Now</button>
         </div>
 
-        <div className='md:w-1/2'>
-        <div>image 1</div>
-        <div>image 2</div>
-        <div>image 3</div>
+        <div className='md:w-1/2 flex flex-wrap gap-5 p-4 justify-center'>
+          {
+           homeProductCartList[0] && homeProductCartList.map((el: any) =>{
+              return(
+                <HomeCard
+                name={el.name}
+                image={el.image}
+                price={el.price}
+                category={el.category}
+                />
+              )
+            })
+          }
         </div>
       </div>
     </div>
