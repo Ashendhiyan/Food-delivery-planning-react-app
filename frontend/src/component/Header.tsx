@@ -11,6 +11,7 @@ interface RootState {
   user: {
     image: string;
     email:string;
+    firstName:string
   };
 }
 
@@ -68,7 +69,7 @@ export const Header = () => {
                     userData.email==="ashen13516@gmail.com" && <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer"> New product</Link>
                   }
                   {
-                    userData.image?  <p className="cursor-pointer text-black bg-blue-400" onClick={handleLogut}>Logout</p> : <Link to={"login"} className="whitespace-nowrap cursor-pointer">
+                    userData.image?  <p className="cursor-pointer text-black bg-blue-400" onClick={handleLogut}>Logout ({userData.firstName})</p> : <Link to={"login"} className="whitespace-nowrap cursor-pointer">
                     Login
                   </Link>
                   }
