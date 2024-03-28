@@ -5,7 +5,7 @@ interface HomeCardProps {
   image: string;
   category: string;
   price: number;
-  loading : string;
+  loading: string;
 }
 
 const HomeCard: React.FC<HomeCardProps> = ({
@@ -13,7 +13,7 @@ const HomeCard: React.FC<HomeCardProps> = ({
   image,
   category,
   price,
-  loading
+  loading,
 }) => {
   return (
     <div className="bg-white shadow-md p-2 rounded min-w-[150px]">
@@ -31,12 +31,11 @@ const HomeCard: React.FC<HomeCardProps> = ({
             <span>{price}</span>
           </p>
         </>
-      )
-    :
-    <div className="flex justify-center items-center h-full">
-        <p>{loading}</p>
-    </div>
-    }
+      ) : (
+        <div className="flex justify-center items-center h-full">
+          <p>{loading}</p>
+        </div>
+      )}
     </div>
   );
 };

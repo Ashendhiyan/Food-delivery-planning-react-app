@@ -3,6 +3,7 @@ import cycle from "../assets/cycling_983534.png";
 import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
+import { GrNext, GrPrevious } from "react-icons/gr";
 
 const Home: React.FC = () => {
   const productData = useSelector((state: any) => state.product.productList);
@@ -43,33 +44,34 @@ const Home: React.FC = () => {
         </div>
 
         <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
-          {homeProductCartList[0] ?
-            homeProductCartList.map((el: any) => {
-              return (
-                <HomeCard
-                  key={el._id}
-                  name={el.name}
-                  image={el.image}
-                  price={el.price}
-                  category={el.category}
-                />
-              );
-            })
-            : 
-            loadingArray.map((el:any,index)=>{
-              return(
-                <HomeCard
-                key={index}
-                loading="Loading..."
-                />
-              )
-            })
-          }
+          {homeProductCartList[0]
+            ? homeProductCartList.map((el: any) => {
+                return (
+                  <HomeCard
+                    key={el._id}
+                    name={el.name}
+                    image={el.image}
+                    price={el.price}
+                    category={el.category}
+                  />
+                );
+              })
+            : loadingArray.map((el: any, index) => {
+                return <HomeCard key={index} loading="Loading..." />;
+              })}
         </div>
       </div>
       <div className="mb-48">
-        <h2 className="font-bold text-2xl text-slate-800 ">Fresh Vegitables</h2>
-        <div className="">
+        <div className="flex w-full items-center">
+          <h2 className="font-bold text-2xl text-slate-800 mb-4">
+            Fresh Vegitables
+          </h2>
+          <div className="ml-auto flex gap-4">
+              <button className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrPrevious /></button>
+              <button className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"><GrNext /></button>
+          </div>
+        </div>
+        <div className="flex gap-5 overflow-scroll">
           {homeProductCartListVegitables.map((el: any) => {
             return (
               <CardFeature
